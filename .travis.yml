@@ -9,10 +9,12 @@ services:
   - docker
 
 script:
+  # # build petsc-docker image
   - make build ACCOUNTNAME=ocramz
-  - git clone https://github.com/ocramz/petsc-hs.git
-  - cd petsc-hs
-  - make
+
+  # - git clone https://github.com/ocramz/petsc-hs.git
+  # - cd petsc-hs
+  # - make
 
 
 # addons:
