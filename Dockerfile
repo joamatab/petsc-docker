@@ -12,7 +12,7 @@ ENV SLEPC_VERSION 3.6.1
 RUN apt-get update
 
 # # Install compiler tools.
-RUN apt-get install -y make gcc gfortran wget curl python pkg-config
+RUN apt-get install -y --no-install-recommends make gcc gfortran wget curl python pkg-config
 
 
 
