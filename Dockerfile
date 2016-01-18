@@ -1,5 +1,5 @@
 #FROM debian:stable
-FROM ubuntu:14.02
+FROM ubuntu:14.04
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 
