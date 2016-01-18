@@ -1,21 +1,25 @@
 FROM debian:stable
 
-MAINTAINER Richard Lincoln, r.w.lincoln@gmail.com
+MAINTAINER Marco Zocca , zocca . marco . gmail . com
 
 # Select the latest stable releases of PETSc and SLEPc.
 #
 # http://www.mcs.anl.gov/petsc/download/
 # http://www.grycap.upv.es/slepc/download/
-ENV PETSC_VERSION 3.5.2
-ENV SLEPC_VERSION 3.5.3
+ENV PETSC_VERSION 3.6.2
+ENV SLEPC_VERSION 3.6.1
 
 RUN apt-get update
 
 # Install compiler tools.
 RUN apt-get install -y make gcc gfortran wget python pkg-config
 
+
+
 # PETSc requires BLAS, LAPACK and MPI.
 RUN apt-get install -y libblas-dev liblapack-dev libopenmpi-dev openmpi-bin openssh-client
+
+
 
 # Download and extract PETSc.
 WORKDIR /opt

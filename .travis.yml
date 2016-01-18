@@ -1,0 +1,16 @@
+sudo: 
+  false
+
+language: 
+  c 
+
+
+script:
+  make build ACCOUNTNAME=ocramz
+  
+
+# addons:
+#   apt:
+#     packages:
+#     - gfortran            # needed to build PETSc
+#     - libgmp-dev          # needed by GHC
