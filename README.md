@@ -9,13 +9,16 @@ Travis CI: [![Build Status](https://travis-ci.org/ocramz/petsc-docker.svg?branch
 Options
 -------
 
-Use `make <target> [ACCOUNTNAME=<accountname>]` where <accountname> is
-your docker account name and <target> is one of
+Use `make <target> [ACCOUNTNAME=<accountname>]` where `<accountname>` is
+your docker account name and `<target>` is one of
 
-help     to display this help message
-build    to build the docker image
-login    to login to your docker account
-push     to push the image to the docker registry
+    help     to display this help message
+
+    build    to build the docker image
+
+    login    to login to your docker account
+
+    push     to push the image to the docker registry
 
 
 Usage

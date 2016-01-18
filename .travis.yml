@@ -1,5 +1,5 @@
-# sudo: 
-#   false
+sudo: 
+  false
 
 language: 
   c 
@@ -12,12 +12,10 @@ before_install:
   - export ACCOUNT=ocramz
 
 script:
-  # # build petsc-docker image
+  # # build Docker image
   - make build ACCOUNTNAME=$ACCOUNT
 
-  - sudo docker login -u $ACCOUNT -e zocca.marco@gmail.com -p zzzzzzzzz
-
-  - sudo docker push $ACCOUNT/petsc-docker
+  # - docker push $ACCOUNT/petsc-docker
 
   # - git clone https://github.com/ocramz/petsc-hs.git
   # - cd petsc-hs
