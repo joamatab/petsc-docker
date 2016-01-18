@@ -1,14 +1,14 @@
-FROM debian:stable
+#FROM debian:stable
+FROM ubuntu:14.02
 
-MAINTAINER Marco Zocca , zocca . marco . gmail . com
+MAINTAINER Marco Zocca, zocca.marco gmail
 
 # Select the latest stable releases of PETSc and SLEPc.
-#
-# http://www.mcs.anl.gov/petsc/download/
-# http://www.grycap.upv.es/slepc/download/
+
 ENV PETSC_VERSION 3.6.2
 ENV SLEPC_VERSION 3.6.1
 
+# # Update APT
 RUN apt-get update
 
 # # Install compiler tools.
