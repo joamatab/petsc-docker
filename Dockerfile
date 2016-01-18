@@ -39,7 +39,12 @@ WORKDIR $PETSC_DIR
 #  --with-threadcomm --with-pthreadclasses \
 #  --download-superlu \
 #  --with-64-bit-indices
-RUN ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-fblaslapack --download-mpich
+RUN ./configure 
+  --with-cc=gcc \
+#  --with-cxx=g++ \
+  --with-fc=gfortran \
+  --download-fblaslapack \
+  --download-mpich
 RUN make all
 RUN make test
 
