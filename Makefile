@@ -1,6 +1,6 @@
-ACCOUNTNAME = rlincoln
+ACCOUNTNAME = ""
 
-.DEFAULT_GOAL := build
+.DEFAULT_GOAL := help
 
 help:
 	@echo "Use \`make <target> [ACCOUNTNAME=<accountname>]' where <accountname> is"
