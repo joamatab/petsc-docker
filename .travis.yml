@@ -1,5 +1,5 @@
-sudo: 
-  false
+# sudo: 
+#   false
 
 language: 
   c 
@@ -15,9 +15,9 @@ script:
   # # build petsc-docker image
   - make build ACCOUNTNAME=$ACCOUNT
 
-  - docker login -u $ACCOUNT -e zocca.marco@gmail.com -p zzzzzzzzz
+  - sudo docker login -u $ACCOUNT -e zocca.marco@gmail.com -p zzzzzzzzz
 
-  - docker push $ACCOUNT/petsc-docker
+  - sudo docker push $ACCOUNT/petsc-docker
 
   # - git clone https://github.com/ocramz/petsc-hs.git
   # - cd petsc-hs
