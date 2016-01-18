@@ -9,15 +9,15 @@ services:
   - docker
 
 script:
-  make build ACCOUNTNAME=ocramz
+  - make build ACCOUNTNAME=ocramz
 
   # make push ACCOUNTNAME=ocramz
  
-  git clone https://github.com/ocramz/petsc-hs.git
+  - git clone https://github.com/ocramz/petsc-hs.git
 
-  cd petsc-hs
+  - cd petsc-hs
 
-  make 
+  - make 
 
 
 
