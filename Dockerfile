@@ -33,12 +33,8 @@ WORKDIR $PETSC_DIR
 
 
 # # Configure and build PETSc.
-# RUN ./configure
-#  --with-mpi=0 \
-#  --with-debugging=0 \
-#  --with-threadcomm --with-pthreadclasses \
-#  --download-superlu \
-#  --with-64-bit-indices
+# RUN ./configure --with-mpi=0  --with-debugging=0  --with-threadcomm --with-pthreadclasses  --download-superlu --with-64-bit-indices
+
 RUN ./configure --with-cc=gcc --with-fc=gfortran --download-fblaslapack --download-mpich
 #  --with-cxx=g++ 
 

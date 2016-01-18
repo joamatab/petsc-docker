@@ -8,9 +8,16 @@ language:
 services:
   - docker
 
+before_install:
+  - export ACCOUNT=ocramz
+
 script:
   # # build petsc-docker image
-  - make build ACCOUNTNAME=ocramz
+  - make build ACCOUNTNAME=$ACCOUNT
+
+  - docker login -u $ACCOUNT -e zocca.marco@gmail.com -p zzzzzzzzz
+
+  - docker push $ACCOUNT/petsc-docker
 
   # - git clone https://github.com/ocramz/petsc-hs.git
   # - cd petsc-hs
