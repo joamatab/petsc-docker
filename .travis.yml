@@ -5,6 +5,9 @@ language:
   c 
 
 
+services:
+  - docker
+
 script:
   make build ACCOUNTNAME=ocramz
   
