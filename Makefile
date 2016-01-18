@@ -12,6 +12,7 @@ help:
 
 build:
 	docker build -t $(ACCOUNTNAME)/petsc-docker .
+	docker images
 
 login:
 	docker login -u $(ACCOUNTNAME)
