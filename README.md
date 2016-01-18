@@ -31,3 +31,9 @@ Derive your image from `rlincoln/petsc` and use the environment variables:
 [petsc]: http://www.mcs.anl.gov/petsc/
 [slepc]: http://www.grycap.upv.es/slepc/
 
+
+Credits
+-------
+
+based on https://github.com/rlincoln/petsc
+
