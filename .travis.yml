@@ -10,15 +10,9 @@ services:
 
 script:
   - make build ACCOUNTNAME=ocramz
-
-  # make push ACCOUNTNAME=ocramz
- 
   - git clone https://github.com/ocramz/petsc-hs.git
-
   - cd petsc-hs
-
-  - make 
-
+  - make
 
 
 # addons:
