@@ -11,17 +11,16 @@ ENV SLEPC_VERSION 3.6.1
 
 RUN apt-get update
 
-# Install compiler tools.
-RUN apt-get install -y make gcc gfortran wget python pkg-config
+# # Install compiler tools.
+RUN apt-get install -y make gcc gfortran wget curl python pkg-config
 
 
 
-# PETSc requires BLAS, LAPACK and MPI.
-RUN apt-get install -y libblas-dev liblapack-dev libopenmpi-dev openmpi-bin openssh-client
+# # PETSc requires BLAS, LAPACK and MPI.
+# RUN apt-get install -y libblas-dev liblapack-dev libopenmpi-dev openmpi-bin openssh-client
 
 
-
-# Download and extract PETSc.
+# # Download and extract PETSc.
 WORKDIR /opt
 RUN wget --no-verbose http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-$PETSC_VERSION.tar.gz
 RUN gunzip -c petsc-lite-$PETSC_VERSION.tar.gz | tar -xof -
@@ -31,18 +30,23 @@ ENV PETSC_ARCH arch-linux2-c-debug
 
 WORKDIR $PETSC_DIR
 
-# Configure and build PETSc.
-RUN ./configure
+
+
+# # Configure and build PETSc.
+# RUN ./configure
 #  --with-mpi=0 \
 #  --with-debugging=0 \
 #  --with-threadcomm --with-pthreadclasses \
 #  --download-superlu \
 #  --with-64-bit-indices
+RUN ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-fblaslapack --download-mpich
 RUN make all
 RUN make test
 
 
-# Download and extract SLEPc.
+
+
+# # Download and extract SLEPc.
 WORKDIR /opt
 RUN wget --no-verbose http://www.grycap.upv.es/slepc/download/distrib/slepc-$SLEPC_VERSION.tar.gz
 RUN gunzip -c slepc-$SLEPC_VERSION.tar.gz | tar -xof -
@@ -51,13 +55,16 @@ ENV SLEPC_DIR /opt/slepc-$SLEPC_VERSION
 
 WORKDIR $SLEPC_DIR
 
-# Configure and build SLEPc.
+
+
+# # Configure and build SLEPc.
 RUN ./configure
 RUN make all
 RUN make test
 
 
-# Add the newly compiled libraries to the environment.
+
+# # Add the newly compiled libraries to the environment.
 ENV LD_LIBRARY_PATH $PETSC_DIR/$PETSC_ARCH/lib:$SLEPC_DIR/$PETSC_ARCH/lib
 ENV PKG_CONFIG_PATH $PETSC_DIR/$PETSC_ARCH/lib/pkgconfig:$SLEPC_DIR/$PETSC_ARCH/lib/pkgconfig
 

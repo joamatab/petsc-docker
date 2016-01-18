@@ -16,7 +16,7 @@ To visualize options for building the Docker image, run:
 Usage
 -----
 
-Derive your image from `rlincoln/petsc` and use the environment variables:
+Once the image is built and uploaded to the Docker Hub, you can derive a customized one from it, by using e.g. the following Dockerfile:
 
     FROM rlincoln/petsc
 
@@ -32,7 +32,7 @@ Derive your image from `rlincoln/petsc` and use the environment variables:
 
 [docker]: https://www.docker.com/
 [petsc]: http://www.mcs.anl.gov/petsc/
-[slepc]: http://www.grycap.upv.es/slepc/
+[slepc]: http://slepc.upv.es/
 
 
 Credits
