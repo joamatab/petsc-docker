@@ -1,4 +1,4 @@
-#FROM debian:stable
+#FROM debian:7.7
 FROM ubuntu:14.04
 
 MAINTAINER Marco Zocca, zocca.marco gmail

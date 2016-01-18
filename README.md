@@ -26,7 +26,7 @@ Usage
 
 Once the image is built and uploaded ("pushed") to the Docker Hub, you can derive a customized one from it, by using e.g. the following Dockerfile:
 
-    FROM rlincoln/petsc
+    FROM ocramz/petsc-docker
 
     ADD petsc1.c /root/petsc1.c
     WORKDIR /root
