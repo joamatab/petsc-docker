@@ -3,6 +3,9 @@ PETSc Docker Image
 
 [Docker][docker] image for [PETSc][petsc] and [SLEPc][slepc].
 
+Travis CI: [![Build Status](https://travis-ci.org/ocramz/petsc-docker.svg?branch=master)(https://travis-ci.org/ocramz/petsc-docker)
+
+
 Build
 -----
 
