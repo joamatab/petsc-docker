@@ -6,7 +6,7 @@ PETSc Docker Image
 Build
 -----
 
-To build the Docker image run:
+To visualize options for building the Docker image, run:
 
     make
 
