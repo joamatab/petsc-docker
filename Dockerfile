@@ -1,5 +1,12 @@
+# # ocramz/petsc-docker
+# # a Docker image for PETSc and SLEPc
+
+
+# # let's stick to debian:7.7 for the time being
+# FROM alpine:3.1
 FROM debian:7.7
 # FROM ubuntu:14.04
+
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 
@@ -27,6 +34,9 @@ RUN gunzip -c petsc-lite-$PETSC_VERSION.tar.gz | tar -xof -
 
 ENV PETSC_DIR /opt/petsc-$PETSC_VERSION
 ENV PETSC_ARCH arch-linux2-c-debug
+
+# # N.B. : assumes SLEPC_ARCH == PETSC_ARCH 
+ENV SLEPC_ARCH $PETSC_ARCH
 
 WORKDIR $PETSC_DIR
 
