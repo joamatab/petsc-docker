@@ -1,4 +1,5 @@
-FROM gliderlabs/alpine:3.3
+FROM alpine:3.1
+# FROM gliderlabs/alpine:3.3
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 
