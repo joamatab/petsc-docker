@@ -10,7 +10,8 @@ ENV SLEPC_VERSION 3.6.1
 
 # # Install compiler tools.
 RUN apk add --no-cache ca-certificates
-RUN apk add --no-cache make gcc gfortran wget curl gunzip python pkg-config
+RUN apk add --no-cache gunzip
+RUN apk add --no-cache make gcc gfortran wget curl python pkg-config
 
 
 
