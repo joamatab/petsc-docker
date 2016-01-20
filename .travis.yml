@@ -4,7 +4,6 @@ sudo:
 language: 
   c 
 
-
 services:
   - docker
 
@@ -14,16 +13,3 @@ before_install:
 script:
   # # build Docker image
   - make build ACCOUNTNAME=$ACCOUNT
-
-  # - docker push $ACCOUNT/petsc-docker
-
-  # - git clone https://github.com/ocramz/petsc-hs.git
-  # - cd petsc-hs
-  # - make
-
-
-# addons:
-#   apt:
-#     packages:
-#     - gfortran            # needed to build PETSc
-#     - libgmp-dev          # needed by GHC

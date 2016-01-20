@@ -1,5 +1,4 @@
-#FROM debian:7.7
-FROM ubuntu:14.04
+FROM gliderlabs/alpine:3.3
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 
@@ -8,16 +7,11 @@ MAINTAINER Marco Zocca, zocca.marco gmail
 ENV PETSC_VERSION 3.6.2
 ENV SLEPC_VERSION 3.6.1
 
-# # Update APT
-RUN apt-get update
 
 # # Install compiler tools.
-RUN apt-get install -y make gcc gfortran wget curl python pkg-config
+RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache make gcc gfortran wget curl gunzip python pkg-config
 
-
-
-# # PETSc requires BLAS, LAPACK and MPI.
-# RUN apt-get install -y libblas-dev liblapack-dev libopenmpi-dev openmpi-bin openssh-client
 
 
 # # Download and extract PETSc.
