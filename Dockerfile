@@ -40,8 +40,7 @@ WORKDIR $PETSC_DIR
 RUN ./configure --with-cc=gcc --with-fc=gfortran --download-fblaslapack --download-mpich
 #  --with-cxx=g++ 
 
-RUN make all
-RUN make test
+RUN make all && make test
 
 
 
@@ -58,9 +57,9 @@ WORKDIR $SLEPC_DIR
 
 
 # # Configure and build SLEPc.
-RUN ./configure
-RUN make all
-RUN make test
+RUN ./configure && \
+    make all && \
+    make test
 
 
 
@@ -68,3 +67,7 @@ RUN make test
 ENV LD_LIBRARY_PATH $PETSC_DIR/$PETSC_ARCH/lib:$SLEPC_DIR/$PETSC_ARCH/lib
 ENV PKG_CONFIG_PATH $PETSC_DIR/$PETSC_ARCH/lib/pkgconfig:$SLEPC_DIR/$PETSC_ARCH/lib/pkgconfig
 
+
+
+# # # clean temp data
+RUN sudo apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
