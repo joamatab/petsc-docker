@@ -11,7 +11,7 @@ help:
 	@echo "  build    build the docker image"
 	@echo "  login    login to your docker account"
 	@echo "  push     push the image to the docker registry"
-	@echo "  run      run the image"
+	@echo "  run      build and run the image"
 
 build:
 	docker build -t $(TAG) .

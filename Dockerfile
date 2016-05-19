@@ -3,10 +3,18 @@ FROM ubuntu:14.04
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 
-# Select specific versions of PETSc and SLEPc.
+# PETSc and SLEPc versions
 
 ENV PETSC_VERSION 3.6.2
 ENV SLEPC_VERSION 3.6.1
+
+# # env. variables
+
+ENV PETSC_DIR /opt/petsc-$PETSC_VERSION
+ENV SLEPC_DIR /opt/slepc-$SLEPC_VERSION
+ENV PETSC_ARCH arch-linux2-c-debug
+ENV SLEPC_ARCH arch-linux2-c-debug
+
 
 # # Update APT
 RUN apt-get update && apt-get upgrade -y
@@ -18,8 +26,8 @@ RUN apt-get install -y make gcc gfortran wget curl python pkg-config build-essen
 RUN apt-get install -y valgrind
 
 
-# # PETSc requires BLAS, LAPACK and MPI.
-# RUN apt-get install -y libblas-dev liblapack-dev libopenmpi-dev openmpi-bin openssh-client
+# # SSH 
+# RUN apt-get install -y openssh-client
 
 
 # # Download and extract PETSc.
@@ -27,16 +35,9 @@ WORKDIR /opt
 RUN wget --no-verbose http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-$PETSC_VERSION.tar.gz && \
     gunzip -c petsc-lite-$PETSC_VERSION.tar.gz | tar -xof -
 
-ENV PETSC_DIR /opt/petsc-$PETSC_VERSION
-ENV PETSC_ARCH arch-linux2-c-debug
-
 WORKDIR $PETSC_DIR
 
-
-
 # # Configure and build PETSc.
-# RUN ./configure --with-mpi=0  --with-debugging=0  --with-threadcomm --with-pthreadclasses  --download-superlu --with-64-bit-indices
-
 RUN ./configure --with-cc=gcc --with-fc=gfortran --download-fblaslapack --download-mpich
 #  --with-cxx=g++ 
 
@@ -50,7 +51,7 @@ WORKDIR /opt
 RUN wget --no-verbose http://www.grycap.upv.es/slepc/download/distrib/slepc-$SLEPC_VERSION.tar.gz
 RUN gunzip -c slepc-$SLEPC_VERSION.tar.gz | tar -xof -
 
-ENV SLEPC_DIR /opt/slepc-$SLEPC_VERSION
+
 
 WORKDIR $SLEPC_DIR
 
