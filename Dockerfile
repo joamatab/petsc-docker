@@ -61,6 +61,10 @@ RUN ./configure && \
     make all && \
     make test
 
+# # remove .tar.gz
+WORKDIR /opt
+RUN rm *.tar.gz
+
 
 
 # # Add the newly compiled libraries to the environment.
@@ -71,3 +75,6 @@ ENV PKG_CONFIG_PATH $PETSC_DIR/$PETSC_ARCH/lib/pkgconfig:$SLEPC_DIR/$PETSC_ARCH/
 
 # # # clean temp data
 RUN sudo apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+WORKDIR /home
