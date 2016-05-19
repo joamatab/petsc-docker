@@ -18,9 +18,9 @@ your docker account name and <target> is one of
 
   login    login to your docker account
 
-  push     build and push the image to the docker registry
+  push     build and upload the image to the docker registry
 
-  run      run the image
+  run      build and run the image on the local machine
 
 
 Usage
