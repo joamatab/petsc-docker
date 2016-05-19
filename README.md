@@ -9,22 +9,19 @@ Travis CI: [![Build Status](https://travis-ci.org/ocramz/petsc-docker.svg?branch
 Options
 -------
 
-Use `make <target> [ACCOUNTNAME=<accountname>]` where `<accountname>` is
-your docker account name and `<target>` is one of
-
-    help     to display this help message
-
-    build    to build the docker image
-
-    login    to login to your docker account
-
-    push     to push the image to the docker registry
+Use `make <target> [ACCOUNT=<accountname>]' where <accountname> is
+your docker account name and <target> is one of
+  help     display this help message
+  build    build the docker image
+  login    login to your docker account
+  push     build and push the image to the docker registry
+  run      run the image
 
 
 Usage
 -----
 
-Once the image is built and uploaded ("pushed") to the Docker Hub, you can derive a customized one from it, by using e.g. the following Dockerfile:
+Once the image is uploaded ("pushed") to the Docker Hub, you can derive a customized one from it, by using e.g. the following Dockerfile:
 
     FROM ocramz/petsc-docker
 
