@@ -12,8 +12,9 @@ ENV SLEPC_VERSION 3.6.1
 RUN apt-get update
 
 # # Install compiler tools.
-RUN apt-get install -y make gcc gfortran wget curl python pkg-config
+RUN apt-get install -y make gcc gfortran wget curl python pkg-config build-essential
 
+RUN apt-get install -y valgrind
 
 
 # # PETSc requires BLAS, LAPACK and MPI.
@@ -22,8 +23,8 @@ RUN apt-get install -y make gcc gfortran wget curl python pkg-config
 
 # # Download and extract PETSc.
 WORKDIR /opt
-RUN wget --no-verbose http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-$PETSC_VERSION.tar.gz
-RUN gunzip -c petsc-lite-$PETSC_VERSION.tar.gz | tar -xof -
+RUN wget --no-verbose http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-$PETSC_VERSION.tar.gz && \
+    gunzip -c petsc-lite-$PETSC_VERSION.tar.gz | tar -xof -
 
 ENV PETSC_DIR /opt/petsc-$PETSC_VERSION
 ENV PETSC_ARCH arch-linux2-c-debug
