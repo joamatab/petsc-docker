@@ -3,17 +3,18 @@ FROM ubuntu:14.04
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 
-# Select the latest stable releases of PETSc and SLEPc.
+# Select specific versions of PETSc and SLEPc.
 
 ENV PETSC_VERSION 3.6.2
 ENV SLEPC_VERSION 3.6.1
 
 # # Update APT
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y
 
 # # Install compiler tools.
 RUN apt-get install -y make gcc gfortran wget curl python pkg-config build-essential
 
+# # Install Valgrind
 RUN apt-get install -y valgrind
 
 
