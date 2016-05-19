@@ -12,15 +12,15 @@ Options
 Use `make <target> [ACCOUNT=<accountname>]` where `<accountname>` is
 your docker account name and <target> is one of
 
-  help     display this help message
+    help     display this help message
 
-  build    build the docker image
+    build    build the docker image
 
-  login    login to your docker account
+    login    login to your docker account
 
-  push     build and upload the image to the docker registry
+    push     build and upload the image to the docker registry
 
-  run      build and run the image on the local machine
+    run      build and run the image on the local machine
 
 
 Usage
