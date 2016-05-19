@@ -15,7 +15,6 @@ ENV SLEPC_DIR /opt/slepc-$SLEPC_VERSION
 ENV PETSC_ARCH arch-linux2-c-debug
 ENV SLEPC_ARCH arch-linux2-c-debug
 
-
 # # Update APT
 RUN apt-get update && apt-get upgrade -y
 
