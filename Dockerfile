@@ -1,4 +1,4 @@
-#FROM debian:7.7
+# FROM debian:7.7
 # FROM ubuntu:14.04
 FROM phusion/baseimage
 
