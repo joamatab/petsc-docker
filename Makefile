@@ -8,6 +8,7 @@ help:
 	@echo "Use \`make <target>\` where <target> is one of"
 	@echo "  help     display this help message"
 	@echo "  build    build the docker image"
+	@echo "  rebuild  '', ignoring previous builds"
 	@echo "  login    login to your docker account"
 	@echo "  push     push the image to the docker registry"
 	@echo "  run      build and run the image"
