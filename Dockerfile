@@ -1,5 +1,6 @@
 #FROM debian:7.7
-FROM ubuntu:14.04
+# FROM ubuntu:14.04
+FROM phusion/baseimage
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 

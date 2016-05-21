@@ -10,7 +10,7 @@ Options
 -------
 
 Use `make <target> [ACCOUNT=<accountname>]` where `<accountname>` is
-your docker account name and <target> is one of
+your Docker account name and <target> is one of
 
     help     display this help message
 
