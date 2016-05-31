@@ -21,10 +21,6 @@ Use `make <target>` where `<target>` is one of
 
     rebuild  '', ignoring previous builds
 
-    login    login to your docker account
-
-    push     build and upload the image to Docker hub
-
     run      build and run the image on the local machine
 
 
