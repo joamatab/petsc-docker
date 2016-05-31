@@ -9,16 +9,21 @@ Travis CI: [![Build Status](https://travis-ci.org/ocramz/petsc-docker.svg?branch
 Options
 -------
 
-Use `make <target> [ACCOUNT=<accountname>]` where `<accountname>` is
-your Docker account name and <target> is one of
+Use `make <target>` where `<target>` is one of
 
     help     display this help message
 
+    rbuild   build remotely (on Docker hub)
+
     build    build the docker image
+
+    pull     fetch precompiled image from Docker hub
+
+    rebuild  '', ignoring previous builds
 
     login    login to your docker account
 
-    push     build and upload the image to the docker registry
+    push     build and upload the image to Docker hub
 
     run      build and run the image on the local machine
 
@@ -26,14 +31,13 @@ your Docker account name and <target> is one of
 Usage
 -----
 
-Once the image is uploaded ("pushed") to the Docker Hub, you can derive a customized one from it, by using e.g. the following Dockerfile:
+Once the image is uploaded to the Docker Hub, you can derive a customized one from it, by using e.g. the following Dockerfile:
 
     FROM ocramz/petsc-docker
 
     ADD petsc1.c /root/petsc1.c
     WORKDIR /root
     RUN gcc -g -v \
-      -I/usr/lib/openmpi/include -I/usr/lib/openmpi/include/openmpi \
       -I$PETSC_DIR/include -I$PETSC_DIR/$PETSC_ARCH/include \
       -L/usr/lib -L$PETSC_DIR/$PETSC_ARCH/lib \
       petsc1.c -lpetsc -lmpi

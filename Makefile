@@ -9,6 +9,7 @@ help:
 	@echo "  help     display this help message"
 	@echo "  rbuild   build remotely (on Docker hub)"
 	@echo "  build    build the docker image"
+	@echo "  pull     fetch precompiled image from Docker hub"
 	@echo "  rebuild  '', ignoring previous builds"
 	@echo "  login    login to your docker account"
 	@echo "  push     push the image to the docker registry"
@@ -23,6 +24,9 @@ build:
 
 rebuild:
 	docker build -no-cache -t $(TAG) .
+
+pull:
+	docker pull $(TAG)
 
 login:
 	docker login -u $(ACCOUNT)
