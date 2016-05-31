@@ -6,8 +6,8 @@ MAINTAINER Marco Zocca, zocca.marco gmail
 
 # PETSc and SLEPc versions
 
-ENV PETSC_VERSION 3.6.2
-ENV SLEPC_VERSION 3.6.1
+ENV PETSC_VERSION 3.7.1
+ENV SLEPC_VERSION 3.7.1
 
 # # env. variables
 
