@@ -20,4 +20,4 @@ env:
 
 script:
   # # build Docker image
-  - docker build -t $TAG --build-arg BUILDTYPE=$BATCH_MODE
+  - docker build -t $TAG --build-arg BUILDTYPE=$BATCH_MODE .
