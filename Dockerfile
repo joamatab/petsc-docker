@@ -41,7 +41,7 @@ WORKDIR $PETSC_DIR
 
 # # Configure and build PETSc using build type flag supplied on the Docker build command line
 RUN mkdir -p install-petsc
-COPY install-petsc.sh install-petsc/
+COPY install-petsc/install-petsc.sh install-petsc/
 RUN install-petsc/install-petsc.sh ${BUILDTYPE}
 
 
