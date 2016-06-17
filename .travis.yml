@@ -19,12 +19,12 @@ env:
   global:
     - ACCOUNT=ocramz
     - PROJECT=petsc-docker
-    - IMAGE_NAME=${ACCOUNT}/${PROJECT}-batch
+    - IMAGE_NAME=${ACCOUNT}/${PROJECT}
 
 
 script:
   # # build Docker image
-  - docker build -t ${TAG} -f Dockerfile .
+  - docker build -t ${IMAGE_NAME} -f Dockerfile .
 
   # # batch-mode tests (required install.of scheduler eg SLURM)
   # - docker build -t ${IMAGE_NAME} -f Dockerfile-batch .
