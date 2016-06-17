@@ -40,7 +40,9 @@ RUN wget --no-verbose http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-l
 WORKDIR $PETSC_DIR
 
 # # Configure and build PETSc using build type flag supplied on the Docker build command line
-RUN ./install-petsc.sh ${BUILDTYPE}
+RUN mkdir -p install-petsc
+COPY install-petsc.sh install-petsc/
+RUN install-petsc/install-petsc.sh ${BUILDTYPE}
 
 
 
@@ -76,5 +78,7 @@ ENV PKG_CONFIG_PATH $PETSC_DIR/$PETSC_ARCH/lib/pkgconfig:$SLEPC_DIR/$PETSC_ARCH/
 # # # clean temp data
 RUN sudo apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+
+VOLUME $PETSC_DIR
 
 WORKDIR /home
