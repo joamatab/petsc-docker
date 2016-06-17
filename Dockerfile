@@ -37,11 +37,8 @@ RUN wget --no-verbose http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-l
 
 WORKDIR $PETSC_DIR
 
-# # Configure and build PETSc.
-RUN ./configure --with-cc=gcc --with-fc=gfortran --download-fblaslapack --download-mpich
-#  --with-cxx=g++ 
-
-RUN make all && make test
+# # Configure and build PETSc using build type flag supplied on the Docker build command line
+RUN ./install-petsc.sh ${BUILD_MODE}
 
 
 
