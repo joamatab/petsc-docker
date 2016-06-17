@@ -5,7 +5,7 @@ language:
   c 
 
 services:
-  # - docker
+  - docker
 
 # addons:
 #   apt:
