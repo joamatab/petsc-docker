@@ -9,7 +9,7 @@ services:
 
 before_install:
   - curl -fsSL https://get.docker.com/ | sudo sh
-  - docker --version
+  - sudo service docker start
 
 env:
   global:
