@@ -19,11 +19,11 @@ env:
     - ACCOUNT=ocramz
     - PROJECT=petsc-docker
     - TAG=$ACCOUNT/$PROJECT
-  matrix:
-    - BATCH_MODE="-batch"
-    - BATCH_MODE=""
+  # matrix:
+  #   - BATCH_MODE="-batch"
+  #   - BATCH_MODE=""
 
 script:
   # # build Docker image
-  - docker build -t ${TAG}${BATCH_MODE} -f Dockerfile${BATCH_MODE} .
-  # - docker build -t $TAG-batch -f Dockerfile-batch .
+  - docker build -t ${TAG} -f Dockerfile .
+  - docker build -t $TAG-batch -f Dockerfile-batch .
