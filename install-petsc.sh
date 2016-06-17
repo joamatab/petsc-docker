@@ -11,4 +11,4 @@ else
     ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-fblaslapack --download-mpich
 fi
 
-RUN make all && make test
+make all && make test

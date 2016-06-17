@@ -1,8 +1,10 @@
-# FROM debian:7.7
-# FROM ubuntu:14.04
 FROM phusion/baseimage
 
 MAINTAINER Marco Zocca, zocca.marco gmail
+
+# build-related env.variables
+ENV BUILDTYPE ""
+
 
 # PETSc and SLEPc versions
 
@@ -38,7 +40,7 @@ RUN wget --no-verbose http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-l
 WORKDIR $PETSC_DIR
 
 # # Configure and build PETSc using build type flag supplied on the Docker build command line
-RUN ./install-petsc.sh ${BUILD_MODE}
+RUN ./install-petsc.sh ${BUILDTYPE}
 
 
 
