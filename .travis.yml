@@ -1,5 +1,5 @@
 sudo: 
-  false
+  required
 
 language: 
   c 
@@ -18,14 +18,15 @@ env:
   global:
     - ACCOUNT=ocramz
     - PROJECT=petsc-docker
-    - IMAGE_NAME=${ACCOUNT}:${PROJECT}
+    - IMAGE_NAME=${ACCOUNT}/${PROJECT}-batch
+
 
 script:
   # # build Docker image
   # - docker build -t ${TAG} -f Dockerfile .
-  - docker build -t ${IMAGE_NAME}-batch -f Dockerfile-batch .
+  - docker build -t ${IMAGE_NAME} -f Dockerfile-batch .
 
   # run image, copy file from designated master node to compute node
-  - docker run --rm -it --name "master" ${IMAGE_NAME}-batch
-  - docker run --rm -it --name "compute" ${IMAGE_NAME}-batch
+  - docker run --rm -it --name "master"  ${IMAGE_NAME}
+  - docker run --rm -it --name "compute" ${IMAGE_NAME}
   
