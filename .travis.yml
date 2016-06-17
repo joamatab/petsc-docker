@@ -8,7 +8,7 @@ services:
   # - docker
 
 before_install:
-  - sudo service docker stop
+  - # sudo service docker stop
   - curl -fsSL https://get.docker.com/ | sudo sh
   - sudo usermod -aG docker root
   - sudo service docker start
