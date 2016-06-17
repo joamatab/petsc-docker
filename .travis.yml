@@ -1,13 +1,15 @@
 sudo: 
-  false
+  true
 
 language: 
   c 
 
 services:
-  - docker
+  # - docker
 
 before_install:
+  - curl -fsSL https://get.docker.com/ | sudo sh
+  - docker --version
 
 env:
   global:
