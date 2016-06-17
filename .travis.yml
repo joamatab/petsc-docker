@@ -12,6 +12,9 @@ before_install:
   - curl -fsSL https://get.docker.com/ | sudo sh
   - sudo usermod -aG docker root
   # - sudo service docker start
+  - ps -A | grep docker
+  - sudo docker -d
+  
 
 env:
   global:
