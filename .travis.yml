@@ -9,11 +9,12 @@ services:
 
 before_install:
   # - sudo service docker stop
-  - curl -fsSL https://get.docker.com/ | sudo sh
-  - sudo usermod -aG docker root
-  # - sudo service docker start
-  - ps -A | grep docker
-  - sudo docker -d
+  # - curl -fsSL https://get.docker.com/ | sudo sh
+  # - sudo usermod -aG docker root
+  # # - sudo service docker start
+  # - ps -A | grep docker
+  # - sudo docker -d
+  - sudo apt-get install docker-engine
   
 
 env:
