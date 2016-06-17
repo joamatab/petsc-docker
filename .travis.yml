@@ -22,7 +22,8 @@ before_install:
   
   # - sudo echo "deb https://apt.dockerproject.org/repo ubuntu-precise main" >> /etc/apt/sources.list.d/docker.list
   # - sudo apt-get update
-  - sudo apt-get update docker
+  - sudo apt-get update
+  - sudo apt-get install docker-engine
   
 
 env:
