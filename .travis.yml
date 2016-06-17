@@ -13,6 +13,7 @@ services:
 #     - docker-engine
 
 before_install:
+  - sudo apt-get install slurm-llnl
 
 env:
   global:
