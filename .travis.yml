@@ -11,7 +11,7 @@ before_install:
   # - sudo service docker stop
   - curl -fsSL https://get.docker.com/ | sudo sh
   - sudo usermod -aG docker root
-  - sudo service docker start
+  # - sudo service docker start
 
 env:
   global:
