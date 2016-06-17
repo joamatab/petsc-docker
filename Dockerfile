@@ -18,18 +18,14 @@ ENV SLEPC_DIR /opt/slepc-$SLEPC_VERSION
 ENV PETSC_ARCH arch-linux2-c-debug
 ENV SLEPC_ARCH arch-linux2-c-debug
 
-# # Update APT
-RUN apt-get update && apt-get upgrade -y
 
-# # Install compiler tools.
-RUN apt-get install -y make gcc gfortran wget curl python pkg-config build-essential
-
-# # Install Valgrind
-RUN apt-get install -y valgrind
-
-
-# # SSH 
-# RUN apt-get install -y openssh-client
+# # # Update APT and install dependencies and tools
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y make \
+                       gcc gfortran wget curl python pkg-config build-essential \
+                       valgrind \
+		       openssh-client 
 
 
 # # Download and extract PETSc.
@@ -39,17 +35,18 @@ RUN wget --no-verbose http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-l
 
 WORKDIR $PETSC_DIR
 
-# # Configure and build PETSc 
+# # # Configure and build PETSc 
 
-RUN echo "=== Configuring without batch mode"
-RUN ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-fblaslapack --download-mpich
+RUN echo "\n=== Configuring without batch mode\n"
 
-RUN make all && make test
+RUN ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-fblaslapack --download-mpich &&\
+    make all && \
+    make test
 
 
 
 
-# # Download and extract SLEPc.
+# # # Download and extract SLEPc.
 WORKDIR /opt
 RUN wget --no-verbose http://www.grycap.upv.es/slepc/download/distrib/slepc-$SLEPC_VERSION.tar.gz
 RUN gunzip -c slepc-$SLEPC_VERSION.tar.gz | tar -xof -
@@ -60,7 +57,7 @@ WORKDIR $SLEPC_DIR
 
 
 
-# # Configure and build SLEPc.
+# # # Configure and build SLEPc.
 RUN ./configure && \
     make all && \
     make test

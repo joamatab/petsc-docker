@@ -24,14 +24,16 @@ env:
 
 script:
   # # build Docker image
-  # - docker build -t ${TAG} -f Dockerfile .
-  - docker build -t ${IMAGE_NAME} -f Dockerfile-batch .
+  - docker build -t ${TAG} -f Dockerfile .
 
-  # run image (a master and a compute copy)
-  - docker run --rm -it --name "master"  ${IMAGE_NAME}
-  - docker run --rm -it --name "compute" ${IMAGE_NAME}
+  # # batch-mode tests (required install.of scheduler eg SLURM)
+  # - docker build -t ${IMAGE_NAME} -f Dockerfile-batch .
+
+  # # run image (a master and a compute copy)
+  # - docker run --rm -it --name "master"  ${IMAGE_NAME}
+  # - docker run --rm -it --name "compute" ${IMAGE_NAME}
   
-  # copy file from designated master node to compute node
-  - docker cp master:/opt/petsc-3.7.2/conftest .
-  - docker cp conftest compute:/opt/petsc-3.7.2/
+  # # copy file from designated master node to compute node
+  # - docker cp master:/opt/petsc-3.7.2/conftest .
+  # - docker cp conftest compute:/opt/petsc-3.7.2/
   
