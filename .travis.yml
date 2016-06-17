@@ -25,5 +25,10 @@ env:
 
 script:
   # # build Docker image
-  - docker build -t ${TAG} -f Dockerfile .
+  # - docker build -t ${TAG} -f Dockerfile .
   - docker build -t $TAG-batch -f Dockerfile-batch .
+
+  # run image, copy file from designated master node to compute node
+  - docker run --rm -it --name "master" ${ACCOUNT}:${PROJECT}-batch
+  - docker run --rm -it --name "compute" ${ACCOUNT}:${PROJECT}-batch
+  
