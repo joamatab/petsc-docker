@@ -2,8 +2,8 @@ FROM phusion/baseimage
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 
-# build-related env.variables
-ENV BUILDTYPE ""
+# # build-related env.variables
+# ENV BUILDTYPE ""
 
 
 # PETSc and SLEPc versions
