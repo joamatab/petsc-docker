@@ -22,10 +22,11 @@ ENV SLEPC_ARCH arch-linux2-c-debug
 # # # Update APT and install dependencies and tools
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y make \
+    apt-get install -y --no-install-recommends \
+                       make \
                        gcc gfortran wget curl python pkg-config build-essential \
                        valgrind \
-		       openssh-client 
+		       openssh-client openssh-server
 
 
 # # Download and extract PETSc.
@@ -39,7 +40,7 @@ WORKDIR $PETSC_DIR
 
 RUN echo "\n=== Configuring without batch mode\n"
 
-RUN ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-fblaslapack --download-mpich &&\
+RUN ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-fblaslapack --download-mpich --download-hdf5=yes &&\
     make all && \
     make test
 
@@ -75,7 +76,9 @@ ENV PKG_CONFIG_PATH $PETSC_DIR/$PETSC_ARCH/lib/pkgconfig:$SLEPC_DIR/$PETSC_ARCH/
 
 
 # # # clean temp data
-RUN sudo apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN sudo apt-get clean && \
+    apt-get purge && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 VOLUME $PETSC_DIR
