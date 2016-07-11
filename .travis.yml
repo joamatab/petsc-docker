@@ -1,16 +1,39 @@
 sudo: 
-  false
+  required
 
 language: 
   c 
 
-
 services:
   - docker
 
+# addons:
+#   apt:
+#     packages:
+#     - docker-engine
+
 before_install:
-  - export ACCOUNT=ocramz
+  - sudo apt-get install -y slurm-llnl
+
+env:
+  global:
+    - ACCOUNT=ocramz
+    - PROJECT=petsc-docker
+    - IMAGE_NAME=${ACCOUNT}/${PROJECT}
+
 
 script:
   # # build Docker image
-  - make build ACCOUNT=$ACCOUNT
+  - docker build -t ${IMAGE_NAME} -f Dockerfile .
+
+  # # batch-mode tests (required install.of scheduler eg SLURM)
+  # - docker build -t ${IMAGE_NAME} -f Dockerfile-batch .
+
+  # # run image (a master and a compute copy)
+  # - docker run --rm -it --name "master"  ${IMAGE_NAME}
+  # - docker run --rm -it --name "compute" ${IMAGE_NAME}
+  
+  # # copy file from designated master node to compute node
+  # - docker cp master:/opt/petsc-3.7.2/conftest .
+  # - docker cp conftest compute:/opt/petsc-3.7.2/
+  

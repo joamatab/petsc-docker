@@ -3,7 +3,7 @@ FROM phusion/baseimage
 MAINTAINER Marco Zocca, zocca.marco gmail
 
 # build-related env.variables
-ENV BUILDTYPE ""
+ENV BUILDTYPE "batch"
 
 
 # PETSc and SLEPc versions
@@ -18,18 +18,17 @@ ENV SLEPC_DIR /opt/slepc-$SLEPC_VERSION
 ENV PETSC_ARCH arch-linux2-c-debug
 ENV SLEPC_ARCH arch-linux2-c-debug
 
-
 # # # Update APT and install dependencies and tools
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends \
-                       make \
+    apt-get install -y make \
                        gcc gfortran wget curl python pkg-config build-essential \
                        valgrind \
-		       openssh-client openssh-server
+		       openssh-client \
+		       slurm-llnl
 
 
-# # Download and extract PETSc.
+# # # Download and extract PETSc.
 WORKDIR /opt
 RUN wget --no-verbose http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-$PETSC_VERSION.tar.gz && \
     gunzip -c petsc-lite-$PETSC_VERSION.tar.gz | tar -xof -
@@ -38,9 +37,9 @@ WORKDIR $PETSC_DIR
 
 # # # Configure and build PETSc 
 
-RUN echo "\n=== Configuring without batch mode\n"
+RUN echo "\n=== Configuring in batch mode\n"
 
-RUN ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-fblaslapack --download-mpich --download-hdf5=yes &&\
+RUN ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-fblaslapack --download-mpich --with-batch && \
     make all && \
     make test
 
@@ -58,7 +57,7 @@ WORKDIR $SLEPC_DIR
 
 
 
-# # # Configure and build SLEPc.
+# # Configure and build SLEPc.
 RUN ./configure && \
     make all && \
     make test
@@ -76,11 +75,10 @@ ENV PKG_CONFIG_PATH $PETSC_DIR/$PETSC_ARCH/lib/pkgconfig:$SLEPC_DIR/$PETSC_ARCH/
 
 
 # # # clean temp data
-RUN sudo apt-get clean && \
-    apt-get purge && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN sudo apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 VOLUME $PETSC_DIR
+
 
 WORKDIR /home
