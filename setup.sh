@@ -62,7 +62,7 @@ rm *.tar.gz
 
 
 # # Add the newly compiled libraries to the environment.
-export LD_LIBRARY_PATH=${PETSC_DIR}/${PETSC_ARCH}/lib:${SLEPC_DIR}/${PETSC_ARCH}/lib
+export LD_LIBRARY_PATH=${PETSC_DIR}/${PETSC_ARCH}/lib/:${SLEPC_DIR}/${PETSC_ARCH}/lib/
 export PKG_CONFIG_PATH=${PETSC_DIR}/${PETSC_ARCH}/lib/pkgconfig:${SLEPC_DIR}/${PETSC_ARCH}/lib/pkgconfig
 
 
