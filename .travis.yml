@@ -1,5 +1,6 @@
-sudo: 
-  required
+sudo:
+  - false
+  # required
 
 language: 
   c 
@@ -13,7 +14,7 @@ services:
 #     - docker-engine
 
 before_install:
-  - sudo apt-get install -y slurm-llnl
+  # - sudo apt-get install -y slurm-llnl
 
 env:
   global:
@@ -36,4 +37,6 @@ script:
   # # copy file from designated master node to compute node
   # - docker cp master:/opt/petsc-3.7.2/conftest .
   # - docker cp conftest compute:/opt/petsc-3.7.2/
+  
+  - docker images
   
