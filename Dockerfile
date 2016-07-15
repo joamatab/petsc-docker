@@ -20,7 +20,7 @@ ENV PETSC_DIR=${SWDIR}/petsc-${PETSC_VERSION} \
     SLEPC_ARCH=${ARCH}
 
 
-ADD setup.sh ${SWDIR}
+COPY setup.sh ${SWDIR}
 WORKDIR ${SWDIR}
 RUN ./setup.sh ${PETSC_VERSION} ${SLEPC_VERSION} ${ARCH} ${SWDIR}
 
